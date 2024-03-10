@@ -1,0 +1,27 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+</head>
+<body>
+    <form class="" method="POST">
+        {% csrf_token %}
+        <label class="label">username</label>
+        <input class="input" {% render_field form.username class="form-control" hx-post="/check_username/" hx-trigger="keyup" hx-swap="outherhtml" hx-target="#username-error" %}>
+        <div id="username-error"></div>
+    </br>
+    
+        <label class="label">password</label>
+        <input class="input" {{form.password}}>
+    </br>
+</br>
+        <button class="btn btn-secondary" type="submit">submit</button>
+    </form>
+</body>
+</html>
